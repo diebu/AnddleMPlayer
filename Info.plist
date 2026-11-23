@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- 后台播放：锁屏 / 切到别的 App 之后音乐继续放 -->
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>audio</string>
+	</array>
+	<!-- Documents 本身就是音乐库根目录，会出现在「文件」App 里，可以直接拖歌进来 -->
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
+	<!-- 整套界面只有黑、白、红三色，固定深色外观 -->
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
+	<!-- 让「文件」和其他 App 的分享菜单里出现本 App，可以把歌曲或文件夹送进来 -->
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeName</key>
+			<string>音乐</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.audio</string>
+				<string>public.mp3</string>
+				<string>public.mpeg-4-audio</string>
+				<string>public.aiff-audio</string>
+				<string>org.xiph.flac</string>
+				<string>public.folder</string>
+			</array>
+		</dict>
+	</array>
+	<!-- 这个 App 没有用任何加密算法，省掉 App Store 的出口合规问询 -->
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+</dict>
+</plist>
