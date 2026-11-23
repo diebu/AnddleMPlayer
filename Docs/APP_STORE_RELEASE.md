@@ -18,7 +18,7 @@
 - 加密合规键 `ITSAppUsesNonExemptEncryption` 为 `false`。
 - 七种语言资源校验通过。
 
-版本递增规则见 `Docs/VERSIONING.md`。每次 Git 提交会自动递增修订号和构建号。
+版本递增规则见 `Docs/VERSIONING.md`。每次应用代码提交会自动递增修订号和构建号。
 
 ## 上传前必须完成
 

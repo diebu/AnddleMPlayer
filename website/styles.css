@@ -1,0 +1,136 @@
+:root {
+  color-scheme: dark;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "PingFang SC",
+    "Helvetica Neue", Arial, sans-serif;
+  background: #080808;
+  color: #f5f5f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 50% -20%, rgba(224, 27, 45, 0.25), transparent 42rem),
+    #080808;
+}
+
+a {
+  color: #ff5364;
+  text-underline-offset: 0.18em;
+}
+
+.landing,
+.policy {
+  width: min(100% - 2.5rem, 52rem);
+  margin: 0 auto;
+}
+
+.landing {
+  min-height: 100vh;
+  display: grid;
+  place-content: center;
+  text-align: center;
+}
+
+.policy {
+  padding: 3rem 0 6rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.75rem;
+  color: #ff5364;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 9vw, 4.8rem);
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+}
+
+h2 {
+  margin: 2.5rem 0 0.75rem;
+  font-size: 1.2rem;
+  letter-spacing: -0.015em;
+}
+
+p,
+li {
+  color: #c9c9ce;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+ul {
+  padding-left: 1.35rem;
+}
+
+.lead {
+  max-width: 42rem;
+  margin: 1.5rem 0 2rem;
+  color: #e2e2e5;
+  font-size: 1.08rem;
+}
+
+.updated {
+  margin: 1rem 0 0;
+  color: #8e8e93;
+  font-size: 0.9rem;
+}
+
+.button {
+  display: inline-block;
+  margin: 1rem auto 0;
+  padding: 0.9rem 1.35rem;
+  border-radius: 999px;
+  background: #e0192d;
+  color: white;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.text-link {
+  display: block;
+  margin-top: 1.25rem;
+  font-size: 0.9rem;
+}
+
+.language {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 4rem;
+  color: #8e8e93;
+  font-size: 0.9rem;
+}
+
+.language a {
+  color: inherit;
+}
+
+.language a:hover {
+  color: #f5f5f7;
+}
+
+@media (max-width: 36rem) {
+  body {
+    background:
+      radial-gradient(circle at 50% -10%, rgba(224, 27, 45, 0.22), transparent 30rem),
+      #080808;
+  }
+
+  .policy {
+    padding-top: 1.5rem;
+  }
+
+  .language {
+    margin-bottom: 2.5rem;
+  }
+}

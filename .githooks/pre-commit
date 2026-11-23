@@ -1,0 +1,57 @@
+#!/bin/zsh
+set -euo pipefail
+
+project_dir="$(cd "$(dirname "$0")/.." && pwd)"
+cd "$project_dir"
+
+if [[ "${SKIP_VERSION_BUMP:-0}" == "1" ]]; then
+  exit 0
+fi
+
+# The initial commit has no previous version to compare against.
+if ! git rev-parse --verify HEAD >/dev/null 2>&1; then
+  exit 0
+fi
+
+application_paths=(
+  AnddleMPlayer
+  AnddleMPlayerTests
+  AnddleMPlayerUITests
+  MusicPlayer
+  AnddleMPlayer.xcodeproj
+  Info.plist
+)
+
+# Documentation, scripts, and Git workflow changes do not change the app version.
+if git diff --cached --quiet -- "${application_paths[@]}"; then
+  exit 0
+fi
+
+project_file="AnddleMPlayer.xcodeproj/project.pbxproj"
+
+version_from_plist() {
+  awk '
+    /MARKETING_VERSION = / {
+      gsub(/;/, "", $3)
+      marketing = $3
+    }
+    /CURRENT_PROJECT_VERSION = / {
+      gsub(/;/, "", $3)
+      build = $3
+    }
+    END {
+      print marketing " (" build ")"
+    }
+  '
+}
+
+staged_version="$(git show ":$project_file" | version_from_plist)"
+head_version="$(git show "HEAD:$project_file" | version_from_plist)"
+
+# A manual major/minor/patch bump already satisfies the version requirement.
+if [[ "$staged_version" != "$head_version" ]]; then
+  exit 0
+fi
+
+./Scripts/bump-version.sh patch
+git add "$project_file"
